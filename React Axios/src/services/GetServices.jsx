@@ -8,3 +8,9 @@ const api = axios.create({
 export const getMovie = ()=>{
     return api.get("?i=tt3896198&apikey=1c12799f&s=titan&page=1");
 }
+
+// creating a delete function
+
+export const deletePost =(id)=>{
+    return api.delete(`/posts/${id}`)
+}
