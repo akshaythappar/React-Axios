@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { getPost } from "../../api/PostApi";
 import "../../App.css"
 import { deletePost } from "../../services/GetServices";
+import { Form } from "./Form";
 
 export const Posts = () => {
   const [data, setData] = useState([]);
@@ -27,9 +28,12 @@ export const Posts = () => {
       console.log(error);
     }
   }
-  return (
+  return (<>
+    <section className="section-form">
+      <Form data={data} setData={setData}/>
+    </section>
     <section className="section-post">
-      <ul>
+      <ol>
         {data.map((currElem) => {
             const {id,body,title}=currElem;
          return  <li key={id}>
@@ -39,7 +43,8 @@ export const Posts = () => {
             <button className="btn-delete" onClick={()=>handleDeletePost(id)}>Delete</button>
           </li>;
         })}
-      </ul>
+      </ol>
     </section>
+    </>
   );
 };
